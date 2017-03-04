@@ -1,2 +1,31 @@
-<h1>Welcome to the photo app</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% if current_user %>
+  <h3>Welcome <%= current_user.email %></h3>
+<% else %>
+
+<div class="jumbotron text-center">
+  <h1>Welcome to the photo app</h1>
+  <p>Find me in app/views/welcome/index.html.erb</p>
+</div>
+
+<div class="col-xs-12 col-xs-offset-0 col-sm-4 col-sm-offset-2 text-center">
+  <h3>Premium Plan <small>Price $10</small></h3>
+  <ul class="list-unstyled">
+    <li>Unlimited Uploads</li>
+    <li>Responsive Design</li>
+    <li>Access Anywhere</li>
+  </ul>
+  <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
+</div>
+
+<div class="col-xs-12 col-sm-4 text-center">
+  <h3>Amaze Plan <small>Price $20</small></h3>
+  <ul class="list-unstyled">
+    <li>Unlimited Uploads</li>
+    <li>Responsive Design</li>
+    <li>Access Anywhere</li>
+    <li>Unlimited Projects</li>
+  </ul>
+  <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
+</div>
+
+<% end %>
