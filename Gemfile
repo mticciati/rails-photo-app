@@ -15,6 +15,8 @@ gem 'devise-bootstrap-views'
 
 gem 'sendgrid-ruby'
 
+gem 'stripe'
+
 gem 'less-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
