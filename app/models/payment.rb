@@ -10,7 +10,7 @@ class Payment < ApplicationRecord
     (Date.today.year..(Date.today.year+10)).to_a
   end
 
-  def proccess_payment
+  def process_payment
     customer = Stripe::Customer.create email: email, card: token
 
     Stripe::Charge.create customer: customer.id,
