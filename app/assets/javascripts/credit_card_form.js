@@ -5,10 +5,12 @@ $(document).ready(function() {
   submitHandler = function(e) {
 
     var $form = $(e.target);
+    console.log($form);
     $form.find('input[type=submit]').prop('disabled', true);
 
     if (Stripe) {
       Stripe.card.createToken($form, stripeResponseHandler);
+      console.log('stripe');
     }
     else {
       show_error('Failed to load credit card proccessing functionality. Please refresh and try again');
@@ -20,6 +22,8 @@ $(document).ready(function() {
 
   stripeResponseHandler = function(status, response) {
     var token, $form;
+    console.log('status ', status);
+    console.log(response);
 
     $form = $('.cc-form');
 
@@ -30,9 +34,9 @@ $(document).ready(function() {
     }
     else {
       token = response.id;
-      $form.append('<input type="hidden" name="payment[]" />').val(token);
+      $form.append('<input type="hidden" name="payment[token]" value="'+token+'"/>');
       $('[data-stripe=number]').remove();
-      $('[data-stripe=cvv]').remove();
+      $('[data-stripe=cvc]').remove();
       $('[data-stripe=exp-month]').remove();
       $('[data-stripe=exp-year]').remove();
       $('[data-stripe=label]').remove();
@@ -55,6 +59,6 @@ $(document).ready(function() {
     return false;
   };
 
-  $('.cc-form').on('submit', submitHandler);
+  $(document).on('submit', '.cc-form', submitHandler);
 
 });

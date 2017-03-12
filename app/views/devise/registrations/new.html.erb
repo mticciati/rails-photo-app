@@ -1,5 +1,5 @@
-<script type="JavaScript">
-  Stripe.setPuplishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
+<script language="Javascript">
+  Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
 </script>
 
 <div class="row">
@@ -32,15 +32,15 @@
                   <%= p.text_field :card_number, class: 'form-control', required: true, data: {stripe: 'number'} %>
                 </div>
                 <div class="form-group">
-                  <%= p.label :card_cvv, "Card CVV", data: {stripe: 'label'} %>
-                  <%= p.text_field :card_cvv, class: 'form-control', required: true, data: {stripe: 'cvv'} %>
+                  <%= p.label :card_cvc, "Card CVC", data: {stripe: 'label'} %>
+                  <%= p.text_field :card_cvc, class: 'form-control', required: true, data: {stripe: 'cvc'} %>
                 </div>
                 <div class="form-group">
                   <%= p.label :card_expires, "Card Expires", data: {stripe: 'label'} %>
-                  <%= p.select :card_expires_month, options_for_select(Payment.month_options), {include_blank: 'Month'}, "data-stripe" => "exp-month", class: 'form-control', required: true %>
+                  <%= p.select :card_expires_month, options_for_select(Payment.month_options), {include_blank: 'Month'}, "data-stripe" => "exp_month", class: 'form-control', required: true %>
                 </div>
                 <div class="form-group">
-                  <%= p.select :card_expires_year, options_for_select(Payment.year_options), {include_blank: 'Year'}, data: {stripe: "exp-year"}, class: 'form-control', required: true %>
+                  <%= p.select :card_expires_year, options_for_select(Payment.year_options), {include_blank: 'Year'}, data: {stripe: "exp_year"}, class: 'form-control', required: true %>
                 </div>
               </div>
             </div>
