@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @image.name %></dd>
   <dt></dt>
-  <dd><%= image_tag(@image.picture.url, style: 'width:50%; max-width:250px;') if @image.picture? %></dd>
+  <dd><%= image_tag(@image.picture.url, class: 'image-thumb') if @image.picture? %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
